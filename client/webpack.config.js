@@ -9,7 +9,10 @@ module.exports = () => {
     mode: 'development',
     entry: {
       main: './src/js/index.js',
-      install: './src/js/install.js'
+      install: './src/js/install.js',
+      editor: './src/js/editor.js',
+      header: './src/js/header.js',
+      index: './src/js/index.js'
     },
     output: {
       filename: '[name].bundle.js',
@@ -17,13 +20,13 @@ module.exports = () => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: "./index.html",
-        title: "Text Editor",
+        template: './index.html',
+        title: 'Text Editor',
       }),
       // new MiniCssExtractPlugin(),
       new InjectManifest({
-        swSrc: "./src-sw.js",
-        swDest: "src-sw.js",
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js',
       }),
       new WebpackPwaManifest({
         fingerprints: false,
@@ -52,10 +55,6 @@ module.exports = () => {
           test: /\.css$/i,
           use: ["style-loader", "css-loader"],
         },
-        // {
-        //   test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        //   type: "asset/resource",
-        // },
         {
           test: /\.m?js$/,
           exclude: /node_modules/,
